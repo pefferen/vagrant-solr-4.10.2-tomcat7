@@ -12,7 +12,7 @@
 #      \::/  /       \::/  /       \:\__\    |:|  |
 #       \/__/         \/__/         \/__/     \|__|
 #
-# Assumption we are using Ubuntu thrusty 64 bits (14.04)
+# Assumption we are using Ubuntu Trusty 64 bits (14.04)
 # Apache Solr 4.10.2
 # Vagrant provisioning script
 # Author: Patrick van Efferen
@@ -42,7 +42,10 @@ fi
 
 # Check for solr base directory, if not create it.
 if [ ! -d "/usr/share/solr" ]; then
-  # Create the Solr base directory/
+  # Create the Solr base directory.
+  sudo mkdir -p /usr/share/solr
+
+  # Copy all default cores and settings to the Solr base directory.
   sudo cp -r solr-$solr_version/example/multicore/* /usr/share/solr
 
   # All Solr file need to be owned by the Tomcat user.
